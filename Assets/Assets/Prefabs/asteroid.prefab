@@ -163,3 +163,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0.1
   rotationSpeed: 45
+  lowerSpeed: 0.045
+  upperSpeed: 0.075
+  lowerRotation: -2
+  upperRotation: 2
+  deadZoneLeft: -15
+  deadZoneRight: 15
+  deadZoneTop: 7
+  deadzoneBot: -7
+  GameObject: {fileID: 0}
