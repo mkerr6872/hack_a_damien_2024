@@ -11,7 +11,7 @@ public class AstroidSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      Instantiate(astroid, transform.position, transform.rotation);   
+      SpawnAsteroid();
     }
 
     // Update is called once per frame
@@ -22,8 +22,15 @@ public class AstroidSpawner : MonoBehaviour
       }
       else
       {
-        Instantiate(astroid, transform.position, transform.rotation); 
-        timer=0;
+        SpawnAsteroid();
       }
+    }
+
+    //spawn asteroid
+    void SpawnAsteroid()
+    {
+
+      Instantiate(astroid, transform.position, transform.rotation); 
+      timer=0;
     }
 }
