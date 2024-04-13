@@ -314,9 +314,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minForwardVelocity: 0
-  maxFowardVelocity: 20
+  maxFowardVelocity: 0.18
   rotationRate: 5
-  acceleration: 0.001
+  acceleration: 0.0025
   ship_velocity: {x: 0, y: 0, z: 0}
   ship_direction: {x: 0, y: 0, z: 0}
 --- !u!50 &1858127354
