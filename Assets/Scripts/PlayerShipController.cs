@@ -11,23 +11,25 @@ public class NewBehaviourScript : MonoBehaviour
     [SerializeField] private float minForwardVelocity = 0f;
     [SerializeField] private float maxFowardVelocity = 20f;
     [SerializeField] private float rotationRate = 5f;
-    [SerializeField] private float acceleration = 0.1f;
+    [SerializeField] private float acceleration = 0.001f;
 
-    public float movementSpeed;
+    public Vector3 ship_velocity;
     public Vector3 ship_direction;
+
     
-
-
-
     // Start is called before the first frame update
     void Start()
     {
         ship_direction = transform.up;
+        
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        transform.position = transform.position + ship_velocity;
+        Debug.Log(ship_velocity.magnitude);
+
 
         if (Input.GetKey(KeyCode.A))
         {
@@ -42,8 +44,8 @@ public class NewBehaviourScript : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.W))
         {
-            transform.position = transform.position + ship_direction * 0.05f;
-            Debug.Log(ship_direction);
+            ship_velocity = ship_velocity + ship_direction * acceleration;
+            
         }
     }
 }

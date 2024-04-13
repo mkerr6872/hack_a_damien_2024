@@ -315,10 +315,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minForwardVelocity: 0
   maxFowardVelocity: 20
-  rotationRate: 1
-  acceleration: 0.1
-  movementSpeed: 0
-  ship_Rigidbody: {fileID: 0}
+  rotationRate: 5
+  acceleration: 0.001
+  ship_velocity: {x: 0, y: 0, z: 0}
+  ship_direction: {x: 0, y: 0, z: 0}
 --- !u!50 &1858127354
 Rigidbody2D:
   serializedVersion: 4
