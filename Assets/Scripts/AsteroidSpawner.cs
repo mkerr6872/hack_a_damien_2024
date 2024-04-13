@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AstroidSpawner : MonoBehaviour
 {
-    public GameObject astroid;
+    public GameObject asteroid;
     public float spawnRate = 2;
     public float timer = 0;
 
@@ -30,7 +30,7 @@ public class AstroidSpawner : MonoBehaviour
     void SpawnAsteroid()
     {
 
-      Instantiate(astroid, transform.position, transform.rotation); 
+      Instantiate(asteroid, transform.position, transform.rotation); 
       timer=0;
     }
 }

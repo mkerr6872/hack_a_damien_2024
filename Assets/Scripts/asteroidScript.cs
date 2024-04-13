@@ -11,7 +11,7 @@ public class astroidScript : MonoBehaviour
     public float upperSpeed = 0.01f;
 
     //ranges of rotation
-    public float lowerRotation = 1f;
+    public float lowerRotation = -2f;
     public float upperRotation = 2f;
 
     // Deadzones
