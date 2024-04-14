@@ -330,8 +330,8 @@ GameObject:
   m_Component:
   - component: {fileID: 513639558}
   - component: {fileID: 513639557}
-  - component: {fileID: 513639556}
   - component: {fileID: 513639555}
+  - component: {fileID: 513639559}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -354,36 +354,14 @@ MonoBehaviour:
   maxFowardVelocity: 0.2
   rotationRate: 5
   acceleration: 0.0025
+  fireCooldown: 40
   ship_velocity: {x: 0, y: 0, z: 0}
   ship_direction: {x: 0, y: 0, z: 0}
   ship_drift: {x: 0, y: 0, z: 0}
---- !u!50 &513639556
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 513639554}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  fire_timer: 0
+  can_fire: 0
+  explosionPrefab: {fileID: 1540157807168534558, guid: db6a52ed0905a574ba6cfc869074d6e3, type: 3}
+  bulletPrefab: {fileID: 1519702326751040966, guid: b6c81f37b1b88b747a14992cce339fc3, type: 3}
 --- !u!212 &513639557
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -451,6 +429,69 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &513639559
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513639554}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.99, y: 0.75}
+    newSize: {x: 0.99, y: 0.75}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.48354062, y: 0.079162806}
+      - {x: 0.37791064, y: 0.01589448}
+      - {x: 0.29409882, y: 0.047703512}
+      - {x: 0.13826467, y: 0.123426065}
+      - {x: 0.125, y: 0.235}
+      - {x: 0.12736045, y: 0.375}
+      - {x: -0.105, y: 0.375}
+      - {x: -0.145, y: 0.125}
+      - {x: -0.265, y: 0.065}
+      - {x: -0.49499997, y: 0.095}
+      - {x: -0.49499997, y: -0.24499999}
+      - {x: -0.42499998, y: -0.285}
+      - {x: -0.145, y: -0.295}
+      - {x: -0.095, y: -0.375}
+      - {x: 0.105, y: -0.375}
+      - {x: 0.255, y: -0.285}
+      - {x: 0.45499998, y: -0.265}
+      - {x: 0.49499997, y: -0.255}
+  m_UseDelaunayMesh: 0
 --- !u!1 &801608841
 GameObject:
   m_ObjectHideFlags: 0

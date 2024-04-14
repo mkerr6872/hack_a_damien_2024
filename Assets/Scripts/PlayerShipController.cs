@@ -12,15 +12,25 @@ public class NewBehaviourScript : MonoBehaviour
     [SerializeField] private float maxFowardVelocity = 0.2f;
     [SerializeField] private float rotationRate = 5f;
     [SerializeField] private float acceleration = 0.0025f;
+    [SerializeField] private int fireCooldown = 25;
 
     public Vector3 ship_velocity;
     public Vector3 ship_direction;
     public Vector3 ship_drift;
+
+    public int fire_timer;
+    public bool can_fire;
     
+
+    public GameObject explosionPrefab;
+    public GameObject bulletPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
         ship_direction = transform.up;
+        fire_timer = 0;
+        can_fire = true;
     }
 
     // Update is called once per frame
@@ -28,6 +38,17 @@ public class NewBehaviourScript : MonoBehaviour
     {
         //Debug
         //Debug.Log(ship_velocity.magnitude);
+
+        // Gun cooldown
+        if (can_fire == false)
+        {
+            fire_timer += 1;
+        }
+
+        if (fire_timer > fireCooldown)
+        {
+            can_fire = true;
+        }
 
 
         // Update position based on ship_velocity vector
@@ -76,7 +97,7 @@ public class NewBehaviourScript : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Q))
         {
-            if ((ship_velocity + ship_direction * acceleration).magnitude < 0.25f)
+            if ((ship_velocity + ship_direction * acceleration).magnitude < maxFowardVelocity)
             {
                 ship_drift = Quaternion.Euler(0, 0, 90) * ship_direction;
                 ship_velocity = ship_velocity + ship_drift * acceleration;
@@ -84,11 +105,29 @@ public class NewBehaviourScript : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.E))
         {
-            if ((ship_velocity + ship_direction * acceleration).magnitude < 0.25f)
+            if ((ship_velocity + ship_direction * acceleration).magnitude < maxFowardVelocity)
             {
                 ship_drift = Quaternion.Euler(0, 0, -90) * ship_direction;
                 ship_velocity = ship_velocity + ship_drift * acceleration;
             }
+        }
+        if (Input.GetKey(KeyCode.Space)) 
+        {
+            if (can_fire == true)
+            {
+                Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                can_fire = false;
+                fire_timer = 0;
+            }
+            
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.collider.name == "asteroid(Clone)")
+        {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 }
