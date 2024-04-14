@@ -34,6 +34,8 @@ public class NewBehaviourScript : MonoBehaviour
     SpriteRenderer picture;
     SpriteRenderer engine_anim;
 
+    public LogicScript logic;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -163,6 +165,7 @@ public class NewBehaviourScript : MonoBehaviour
             sound.PlayOneShot(ship_explosion, 1);
             picture.enabled = false;
             Destroy(gameObject, 2);
+            logic.gameOver();
         }
     }
 

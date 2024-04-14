@@ -17,4 +17,16 @@ public class LogicScript : MonoBehaviour
    enemySpawn.SetActive(true);
   }
 
+  public GameObject gameOverScreen;
+
+  public void restartGame()
+  {
+    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+  }
+
+  public void gameOver()
+  {
+    gameOverScreen.SetActive(true);
+  }
 }
