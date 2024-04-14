@@ -34,6 +34,19 @@ public class EnemyShip : MonoBehaviour
         Destroy(gameObject);
       }
       transform.position += Vector3.Scale(direction, new Vector3(moveSpeedX,moveSpeedY,0f));
+      
+      // GameObject ship = UnityEngine.GameObject.FindGameObjectWithTag("Player");
+      //What is the difference in position?
+      // Vector3 diff = (ship.transform.position - transform.position);
+
+      //We use aTan2 since it handles negative numbers and division by zero errors. 
+      // float angle = Mathf.Atan2(diff.x, diff.y);
+
+      // Now we set our new rotation. 
+      // transform.Rotate(0f, 0f, angle*Mathf.Min(1f,diff.magnitude));
+      // Debug.Log(diff.magnitude);
+      // transform.rotation = Quaternion.Euler(0f, 0f, transform.rotation.z*diff.magnitude);
+      // Debug.Log(transform.rotation.z);
     }
 
     void Awake()
