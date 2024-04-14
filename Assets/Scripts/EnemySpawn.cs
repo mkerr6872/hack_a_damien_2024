@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawn : MonoBehaviour
 {
     public GameObject enemy;
-    public float spawnRate = 2;
+    public float spawnRate = 20;
     public float timer = 0;
     
     public Vector3 startPos = new Vector3(0f,0f,0f);

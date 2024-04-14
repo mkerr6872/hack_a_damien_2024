@@ -19,9 +19,16 @@ public class EnemyShip : MonoBehaviour
 
     //base direction
     public Vector3 direction = new Vector3(1f,1f,0f);
-
+    
+    public Vector3 velocity = new Vector3(1f,1f,0f);
     public GameObject GameObject;
 
+    //pass through 
+    public bool pass = false;
+
+    // chase velocity
+    public float chaseSpeed = 0.09f;
+    public float chaseGap = 4f;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,11 +40,22 @@ public class EnemyShip : MonoBehaviour
       if (CheckDeletion()){
         Destroy(gameObject);
       }
-      transform.position += Vector3.Scale(direction, new Vector3(moveSpeedX,moveSpeedY,0f));
       
-      // GameObject ship = UnityEngine.GameObject.FindGameObjectWithTag("Player");
+      GameObject ship = UnityEngine.GameObject.FindGameObjectWithTag("Player");
       //What is the difference in position?
-      // Vector3 diff = (ship.transform.position - transform.position);
+      Vector3 diff = (ship.transform.position - transform.position);
+      Debug.Log(diff.magnitude); 
+      if (diff.magnitude > chaseGap && pass == false){
+        velocity = diff.normalized*chaseSpeed;
+        transform.position += Vector3.Scale(direction,velocity);
+        
+      } else
+      {
+        
+        transform.position += Vector3.Scale(direction,velocity);
+
+        pass = true;
+      }
 
       //We use aTan2 since it handles negative numbers and division by zero errors. 
       // float angle = Mathf.Atan2(diff.x, diff.y);
@@ -59,6 +77,8 @@ public class EnemyShip : MonoBehaviour
       if (transform.position.y > 0){
         moveSpeedY*=-1;
       }
+
+      velocity = new Vector3(moveSpeedX,moveSpeedY,0f);
 
     }
 
