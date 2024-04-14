@@ -25,6 +25,29 @@ public class astroidScript : MonoBehaviour
     public Vector3 direction = new Vector3(1f,1f,0f);
 
     public GameObject GameObject;
+
+    // sprites
+    public SpriteRenderer spriteRenderer;
+    public static Sprite large_b1;
+    public static Sprite large_b2;
+    public static Sprite med_b1;
+    public static Sprite med_b2;
+    public static Sprite large_g1;
+    public static Sprite large_g2;
+    public static Sprite med_g1;
+    public static Sprite med_g2;
+
+    public Sprite[] asteroids = {large_b1,large_b2,med_b1,med_b2,large_g1,large_g2,med_g1,med_g2};
+    
+    
+    //scaling
+    public float scaleUpperX=0.75f;
+    public float scaleLowerX=1.25f;
+    public float scaleUpperY=0.75f;
+    public float scaleLowerY=1.25f;
+
+    public float scaleX;
+    public float scaleY;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +65,9 @@ public class astroidScript : MonoBehaviour
 
     void Awake()
     {
+      spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+      int i = Random.Range(0, 8);
+      spriteRenderer.sprite = asteroids[i];
       moveSpeedX = Random.Range(lowerSpeedX,upperSpeedX);
       moveSpeedY = Random.Range(lowerSpeedX,upperSpeedX);
       rotationSpeed = Random.Range(lowerRotation,upperRotation);
@@ -51,6 +77,12 @@ public class astroidScript : MonoBehaviour
       if (transform.position.y > 0){
         moveSpeedY*=-1;
       }
+
+      scaleX = Random.Range(scaleLowerX,scaleUpperX);
+      scaleY = Random.Range(scaleLowerY,scaleUpperY);
+      this.transform.localScale += new Vector3(scaleX,scaleY,0f);
+
+
     }
 
     bool CheckDeletion(){
