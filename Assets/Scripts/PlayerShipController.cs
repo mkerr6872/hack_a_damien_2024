@@ -20,10 +20,19 @@ public class NewBehaviourScript : MonoBehaviour
 
     public int fire_timer;
     public bool can_fire;
+    public bool is_boosting;
+    public bool boost_sound;
     
 
     public GameObject explosionPrefab;
     public GameObject bulletPrefab;
+    public AudioClip gun_fire;
+    public AudioClip ship_explosion;
+    public AudioClip rocket_engine;
+
+    AudioSource sound;
+    SpriteRenderer picture;
+    SpriteRenderer engine_anim;
 
     // Start is called before the first frame update
     void Start()
@@ -31,13 +40,33 @@ public class NewBehaviourScript : MonoBehaviour
         ship_direction = transform.up;
         fire_timer = 0;
         can_fire = true;
+        sound = GetComponent<AudioSource>();
+        picture = GetComponent<SpriteRenderer>();
+        engine_anim = GameObject.Find("engine_flames").GetComponent<SpriteRenderer>();
+        picture.enabled = true;
+        is_boosting = false;
+        boost_sound = false;
+        engine_anim.enabled = false;
     }
 
     // Update is called once per frame
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            is_boosting = false;
+        }
+
+    }
+
     void FixedUpdate()
     {
         //Debug
-        //Debug.Log(ship_velocity.magnitude);
+
+
+        // Engine Noise Check
+        engineSound();
+
 
         // Gun cooldown
         if (can_fire == false)
@@ -77,20 +106,23 @@ public class NewBehaviourScript : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0 ,0 , rotationRate) * transform.rotation;
             ship_direction = transform.up;
-            
         }
+
         if (Input.GetKey(KeyCode.D))
         {
             transform.rotation = Quaternion.Euler(0, 0, -rotationRate) * transform.rotation;
             ship_direction = transform.up;
         }
+
         if (Input.GetKey(KeyCode.W))
         {
             if ((ship_velocity + ship_direction * acceleration).magnitude < 0.2f)
             {
                 ship_velocity = ship_velocity + ship_direction * acceleration;
-            } 
+            }
+            is_boosting = true;
         }
+
         if (Input.GetKey(KeyCode.LeftControl))
         {
             ship_velocity *= 0.95f;
@@ -116,6 +148,7 @@ public class NewBehaviourScript : MonoBehaviour
             if (can_fire == true)
             {
                 Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                sound.PlayOneShot(gun_fire, 1);
                 can_fire = false;
                 fire_timer = 0;
             }
@@ -127,7 +160,25 @@ public class NewBehaviourScript : MonoBehaviour
         if (col.collider.name == "asteroid(Clone)")
         {
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            sound.PlayOneShot(ship_explosion, 1);
+            picture.enabled = false;
+            Destroy(gameObject, 2);
+        }
+    }
+
+    private void engineSound()
+    {
+        if (is_boosting == true && boost_sound == false)
+        {
+                sound.Play(0);
+                boost_sound = true;
+                engine_anim.enabled = true;
+        }
+        if (is_boosting == false && boost_sound == true)
+        {
+            sound.Stop();
+            boost_sound = false;
+            engine_anim.enabled = false;
         }
     }
 }

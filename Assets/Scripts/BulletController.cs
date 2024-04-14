@@ -8,7 +8,10 @@ public class BulletController : MonoBehaviour
     public float bullet_speed = 2f;
     public float life_time = 3;
 
-    public Sprite hitMarker;
+    public GameObject hitMarker;
+    public AudioClip death_sound;
+
+    AudioSource sound;
 
 
     // Start is called before the first frame update
@@ -18,6 +21,8 @@ public class BulletController : MonoBehaviour
         direction = GameObject.Find("Ship").transform.up.normalized;
         transform.rotation = GameObject.Find("Ship").transform.rotation;
         Destroy(gameObject, life_time);
+
+        sound = GetComponent<AudioSource>();
 
     }
 
@@ -32,11 +37,10 @@ public class BulletController : MonoBehaviour
     {
         if (collision.collider.name == "asteroid(Clone)")
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = hitMarker;
-            transform.localScale = new Vector3(2, 2, 2);
-            bullet_speed = 0;
-            Destroy(gameObject, 0.5f);
-            Debug.Log("Hit");
+            AudioSource.PlayClipAtPoint(death_sound, transform.position);
+            Instantiate(hitMarker, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+
         }
         
     }
