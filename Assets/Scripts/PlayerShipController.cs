@@ -27,7 +27,7 @@ public class NewBehaviourScript : MonoBehaviour
     void FixedUpdate()
     {
         //Debug
-        Debug.Log(ship_velocity.magnitude);
+        //Debug.Log(ship_velocity.magnitude);
 
 
         // Update position based on ship_velocity vector
