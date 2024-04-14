@@ -161,7 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d38c8cdc8f732282798c6003334354f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.1
+  moveSpeedX: 0
+  moveSpeedY: 0
   rotationSpeed: 45
   lowerSpeedX: 0.05
   upperSpeedX: 0.1
@@ -173,3 +174,13 @@ MonoBehaviour:
   deadzoneBot: -7
   direction: {x: 1, y: 1, z: 0}
   GameObject: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  asteroids:
+  - {fileID: 21300000, guid: 21c0e622edf6285778401df878f1e045, type: 3}
+  - {fileID: 21300000, guid: 88782560304e8c061a52e37666cf8e34, type: 3}
+  - {fileID: 21300000, guid: 1077f03909ef57739bd217bb86675212, type: 3}
+  - {fileID: 21300000, guid: 23aba79c3fc5361538ba943643705d96, type: 3}
+  - {fileID: 21300000, guid: c4a5fbad54153ddb889ac5a97dd742a0, type: 3}
+  - {fileID: 21300000, guid: 5eb296a249e071d0794fa727a45f99b5, type: 3}
+  - {fileID: 21300000, guid: f73d3508988e6cd03b50bab0bf38c1ba, type: 3}
+  - {fileID: 21300000, guid: cc57ac5bc51427f8c9f43acd82c0fe39, type: 3}
