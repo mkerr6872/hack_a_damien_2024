@@ -286,6 +286,13 @@ MonoBehaviour:
   asteroid: {fileID: 4144337710495295500, guid: 7169730ec854fc82c9fd04685a3c20e3, type: 3}
   spawnRate: 2
   timer: 0
+  startPos: {x: 0, y: 0, z: 0}
+  lowerPosX: -14
+  upperPosX: 14
+  lowerPosY: -7
+  upperPosY: 7
+  strictUpperY: 5
+  strictLowerY: -5
 --- !u!4 &1216252320
 Transform:
   m_ObjectHideFlags: 0
@@ -295,7 +302,7 @@ Transform:
   m_GameObject: {fileID: 1216252318}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.78, y: -0.42, z: -0.06015655}
+  m_LocalPosition: {x: 9.03, y: 4.88, z: -0.06015655}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
