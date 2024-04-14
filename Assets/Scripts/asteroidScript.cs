@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class astroidScript : MonoBehaviour
 {
-    public float moveSpeed;
+    public float moveSpeedX;
+    public float moveSpeedY;
     public float rotationSpeed = 1f;
     //ranges of speed
     public float lowerSpeedX = 0.1f;
@@ -27,7 +28,6 @@ public class astroidScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       // moveSpeed = Random.Range(lowerSpeedX,upperSpeedX);       
     }
 
     // Update is called once per frame
@@ -36,16 +36,20 @@ public class astroidScript : MonoBehaviour
       if (CheckDeletion()){
         Destroy(gameObject);
       }
-      transform.position += Vector3.Scale(direction, new Vector3(moveSpeed,0f,0f));
+      transform.position += Vector3.Scale(direction, new Vector3(moveSpeedX,moveSpeedY,0f));
       this.transform.Rotate(new Vector3(0f,0f,1f)*rotationSpeed);
     }
 
     void Awake()
     {
-      moveSpeed = Random.Range(lowerSpeedX,upperSpeedX);
+      moveSpeedX = Random.Range(lowerSpeedX,upperSpeedX);
+      moveSpeedY = Random.Range(lowerSpeedX,upperSpeedX);
       rotationSpeed = Random.Range(lowerRotation,upperRotation);
       if (transform.position.x > 0){
-        moveSpeed*=-1;
+        moveSpeedX*=-1;
+      }
+      if (transform.position.y > 0){
+        moveSpeedY*=-1;
       }
     }
 
