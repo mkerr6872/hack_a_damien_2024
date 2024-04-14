@@ -101,7 +101,8 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   bullet_speed: 1
   life_time: 3
-  hitMarker: {fileID: 21300000, guid: 5c6358942fee34401862f41facdeca87, type: 3}
+  hitMarker: {fileID: 6845376122747287981, guid: 3aba4d379da8c6848ae6883f757c1f6b, type: 3}
+  death_sound: {fileID: 8300000, guid: 6070d722f8557ad4cbb1911ec98a87e5, type: 3}
 --- !u!61 &6542005068503597522
 BoxCollider2D:
   m_ObjectHideFlags: 0
