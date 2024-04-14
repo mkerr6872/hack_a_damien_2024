@@ -24,7 +24,9 @@ public class NewBehaviourScript : MonoBehaviour
 
     public GameObject explosionPrefab;
     public GameObject bulletPrefab;
+    
 
+    public LogicScript logic;
     // Start is called before the first frame update
     void Start()
     {
@@ -128,6 +130,8 @@ public class NewBehaviourScript : MonoBehaviour
         {
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            // Game Over
+            logic.gameOver();
         }
     }
 }

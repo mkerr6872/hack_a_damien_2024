@@ -9,12 +9,23 @@ public class LogicScript : MonoBehaviour
   public GameObject asteroidSpawn;
   public GameObject enemySpawn;
 
+  public GameObject gameOverScreen;
   public void startGame()
   {
-   //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
    welcomeScreen.SetActive(false);
    asteroidSpawn.SetActive(true);
    enemySpawn.SetActive(true);
+  }
+
+  public void restartGame()
+  {
+    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+  }
+
+  public void gameOver()
+  {
+    gameOverScreen.SetActive(true);
   }
 
 }
